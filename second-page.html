@@ -12,27 +12,3 @@
 <p>:)</p>
 <!DOCTYPE html>
 <html lang="en">
-
-  const target = {
-    name: "Vihaan",
-    age: 15
-};
-
-const handler = {
-    get: (obj, prop) => {
-        console.log(`Accessing property: ${prop}`);
-        return prop in obj ? obj[prop] : `Property ${prop} not found`;
-    },
-    set: (obj, prop, value) => {
-        console.log(`Setting property: ${prop} to ${value}`);
-        obj[prop] = value;
-        return true;
-    }
-};
-
-const proxy = new Proxy(target, handler);
-
-console.log(proxy.name);  // Logs "Accessing property: name" and "Alice"
-proxy.age = 30;           // Logs "Setting property: age to 30"
-console.log(proxy.age);   // Logs "Accessing property: age" and "30"
-console.log(proxy.city);  // Logs "Accessing property: city" and "Property city not found"
